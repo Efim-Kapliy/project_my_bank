@@ -1,1 +1,3 @@
-console.log('Hey world 2!');
+import '@/styles/global.scss'
+
+console.log('Hey world 2!')
