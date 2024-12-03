@@ -44,15 +44,18 @@ module.exports = {
 			'@': path.resolve(__dirname, 'src/')
 		}
 	},
-	devtool: isDev ? 'source-map' : false,
-	devServer: {
-		port: 7777,
-		hot: true,
-		static: {
-			directory: path.join(__dirname, 'public')
-		},
-		historyApiFallback: true
-	},
+	devtool: isDev ? 'inline-source-map' : undefined,
+	devServer: isDev
+		? {
+				port: 7777,
+				open: true,
+				hot: true,
+				static: {
+					directory: path.join(__dirname, 'public')
+				},
+				historyApiFallback: true
+			}
+		: undefined,
 	optimization: {
 		minimize: !isDev,
 		minimizer: [
@@ -89,8 +92,7 @@ module.exports = {
 									}
 								}
 							]
-						],
-						plugins: ['@babel/plugin-transform-runtime']
+						]
 					}
 				}
 			},
