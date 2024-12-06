@@ -26,14 +26,6 @@ export default [
 				sourceType: 'module'
 			}
 		}
-		// 	settings: {
-		// 		'import/resolver': {
-		// 			alias: {
-		// 				map: [['@', './src']]
-		// 			},
-		// 			extensions: ['.js']
-		// 		}
-		// 	}
 	},
 	{
 		files: ['**/*.{js,mjs}'],
@@ -54,4 +46,14 @@ export default [
 			'no-mixed-spaces-and-tabs': 'off'
 		}
 	}
+	// {
+	// 	settings: {
+	// 		'import/resolver': {
+	// 			alias: {
+	// 				map: [['@', './src']]
+	// 			},
+	// 			extensions: ['.js']
+	// 		}
+	// 	}
+	// }
 ]
