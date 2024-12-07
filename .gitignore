@@ -3,6 +3,9 @@
 # layout
 /layout
 
+# Folder Templates
+/.fttemplates
+
 # dependencies
 /node_modules
 

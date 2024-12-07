@@ -11,8 +11,8 @@ export default [
 		}
 	},
 	{
-		ignores: ['node_module', 'dist'],
-		...pluginJs.configs.recommended
+		...pluginJs.configs.recommended,
+		ignores: ['node_module', 'dist']
 	},
 	{
 		languageOptions: {
