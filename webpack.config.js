@@ -98,6 +98,7 @@ module.exports = {
 			},
 			{
 				test: /\.module\.s[ac]ss$/i,
+				exclude: /node_modules/,
 				use: [
 					isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
 					{
@@ -114,6 +115,7 @@ module.exports = {
 					{
 						loader: 'sass-loader',
 						options: {
+							api: 'modern-compiler',
 							sourceMap: true
 						}
 					}
@@ -121,6 +123,7 @@ module.exports = {
 			},
 			{
 				test: /^((?!\.module).)*s[ac]ss$/i,
+				exclude: /node_modules/,
 				use: [
 					isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
 					{
@@ -132,6 +135,7 @@ module.exports = {
 					{
 						loader: 'sass-loader',
 						options: {
+							api: 'modern-compiler',
 							sourceMap: true
 						}
 					}
@@ -139,6 +143,7 @@ module.exports = {
 			},
 			{
 				test: /\.css$/i,
+				exclude: /node_modules/,
 				use: [
 					isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
 					'css-loader',
