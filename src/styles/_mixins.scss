@@ -1,6 +1,6 @@
-@use "src/styles/variables";
+@use '@/styles/variables';
 
-@mixin dashboard-section($variant: "big") {
+@mixin dashboard-section($variant: 'big') {
 	margin-top: $gap;
 	background-color: $bg-block;
 	border-radius: $radius;
