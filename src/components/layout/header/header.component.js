@@ -22,10 +22,10 @@ export class Header extends ChildComponent {
 			template,
 			[
 				Logo,
+				Search,
 				new LogoutButton({
 					router: this.router
 				}),
-				Search,
 				new UserItem(
 					{
 						avatarPath:
