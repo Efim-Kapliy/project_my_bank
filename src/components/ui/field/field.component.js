@@ -25,7 +25,7 @@ export class Field extends ChildComponent {
 			placeholder: this.placeholder,
 			type: this.type,
 			value: this.value,
-			name: this.vame
+			name: this.name
 		})
 
 		if (this.type === 'number') {
