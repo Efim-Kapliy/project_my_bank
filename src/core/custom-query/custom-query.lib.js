@@ -42,6 +42,8 @@ export async function customQuery({
 		}
 	}
 
+	console.log(url)
+
 	if (accessToken) {
 		requestOptions.headers.Authorization = `Bearer ${accessToken}`
 	}
