@@ -35,7 +35,7 @@ export class Store {
 	 * @returns {Store} The singleton instance of the Store.
 	 */
 	static getInstance() {
-		if (!Store.instance) {
+		if (typeof Store.instance !== 'object') {
 			Store.instance = new Store({ user: null })
 		}
 
@@ -80,10 +80,11 @@ export class Store {
 	/**
 	 * Log out the user, update the state, and remove the user from the storage service.
 	 */
-	logout(user, accessToken) {
+	logout() {
 		this.state.user = null
-		this.storageService.removeItem(user)
-		this.storageService.removeItem(accessToken)
+		this.storageService.removeItem(USER_STORAGE_KEY)
+		this.storageService.removeItem(ACCESS_TOKEN_KEY)
+		console.log('check logout')
 	}
 
 	/**
