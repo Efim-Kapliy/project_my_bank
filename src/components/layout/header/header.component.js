@@ -19,6 +19,15 @@ export class Header extends ChildComponent {
 		this.store = Store.getInstance()
 		this.store.addObserver(this)
 
+		this.userItem = new UserItem(
+			{
+				avatarPath: '/',
+				name: 'Name'
+			},
+			false,
+			() => alert('Hey')
+		)
+
 		this.router = router
 	}
 
@@ -29,6 +38,7 @@ export class Header extends ChildComponent {
 
 		if (this.user) {
 			authSideElement.show()
+			this.userItem.update(this.user)
 			this.router.navigate('/')
 		} else {
 			authSideElement.hide()
@@ -44,18 +54,12 @@ export class Header extends ChildComponent {
 				new LogoutButton({
 					router: this.router
 				}),
-				new UserItem(
-					{
-						avatarPath:
-							'https://i.pinimg.com/736x/b7/5b/29/b75b29441bbd967deda4365441497221.jpg',
-						name: 'Max'
-					},
-					false,
-					() => alert('Hey')
-				)
+				this.userItem
 			],
 			styles
 		)
+
+		this.update()
 
 		return this.element
 	}
