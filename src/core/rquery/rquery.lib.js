@@ -235,6 +235,8 @@ class RQuery {
 		} else {
 			this.element.classList.add(classNames)
 		}
+
+		return this
 	}
 
 	/**
