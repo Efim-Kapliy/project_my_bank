@@ -159,7 +159,7 @@ class RQuery {
 	numberInput(limit) {
 		if (
 			this.element.tagName.toLowerCase() !== 'input' ||
-			this.element.tagName.toLowerCase() !== 'number'
+			this.element.type !== 'number'
 		) {
 			throw new Error('Element must be an input with type "number"')
 		}
