@@ -99,6 +99,33 @@ class RQuery {
 	}
 
 	/**
+	 * Attach a click event listener to the selected element.
+	 * @param {function(Event): void} callback - The event listener function to execute when the selected element is clicked. The function will receive the event object as its argument.
+	 * @returns {RQuery} The current RQuery instance for chaining.
+	 */
+	click(callback) {
+		this.element.addEventListener('click', callback)
+		return this
+	}
+	/* END EVENTS */
+
+	/* START FORM */
+
+	/**
+	 * Gets or sets the value of an input element.
+	 * @param {string} [newValue] - The new value to set for the input element. If not provided, the method returns the current value.
+	 * @returns {string|RQuery} - If newValue is provided, returns the RQuery instance. Otherwise, returns the current value of the input element.
+	 */
+	value(newValue) {
+		if (typeof newValue === 'undefined') {
+			return this.element.value
+		} else {
+			this.element.value = newValue
+			return this
+		}
+	}
+
+	/**
 	 * Set an event listener for the submit event of a form element.
 	 * @param {function(Event): void} onSubmit - The event listener for the form's submit event.
 	 * @returns {RQuery} The current RQuery instance for chaining.
@@ -116,18 +143,6 @@ class RQuery {
 		return this
 	}
 
-	/**
-	 * Attach a click event listener to the selected element.
-	 * @param {function(Event): void} callback - The event listener function to execute when the selected element is clicked. The function will receive the event object as its argument.
-	 * @returns {RQuery} The current RQuery instance for chaining.
-	 */
-	click(callback) {
-		this.element.addEventListener('click', callback)
-		return this
-	}
-	/* END EVENTS */
-
-	/* START FORM */
 	/**
 	 * Set attributes adn event listeners for an input element.
 	 * @param {object} options - An object containing input options.
@@ -165,7 +180,7 @@ class RQuery {
 		}
 
 		this.element.addEventListener('input', event => {
-			let value = event.target.replace(/[^0-9]/g, '')
+			let value = event.target.value.replace(/[^0-9]/g, '')
 			if (limit) value = value.substring(0, limit)
 			event.target.value = value
 		})
@@ -283,6 +298,20 @@ class RQuery {
 			this.element.setAttribute(attributeName, value)
 			return this
 		}
+	}
+
+	/**
+	 * Removes an attribute from the current element.
+	 * @param {string} attributeName - The name of the attribute to remove.
+	 * @returns {RQuery} - Returns the RQuery instance.
+	 */
+	removeAttr(attributeName) {
+		if (typeof attributeName !== 'string') {
+			throw new Error('Attribute name must be a string')
+		}
+
+		this.element.removeAttribute(attributeName)
+		return this
 	}
 
 	/* END STYLES */
