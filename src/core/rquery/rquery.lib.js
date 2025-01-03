@@ -197,7 +197,7 @@ class RQuery {
 
 		if (
 			this.element.tagName.toLowerCase() !== 'input' ||
-			this.element.tagName.toLowerCase() !== 'text'
+			this.element.type !== 'text'
 		) {
 			throw new Error('Element must be an input with type "test"')
 		}
