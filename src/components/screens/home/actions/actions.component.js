@@ -40,9 +40,13 @@ export class Actions extends ChildComponent {
 		const inputElement = $R(this.element).find('input')
 		const amount = inputElement.value()
 
+		const reset = () => {
+			$R(event.target).removeAttr('disabled').text(type)
+		}
+
 		if (!amount) {
 			validationService.showError($R(this.element).find('label'))
-			$R(event.target).removeAttr('disabled').text(type)
+			reset()
 			return
 		}
 
@@ -53,7 +57,7 @@ export class Actions extends ChildComponent {
 			document.dispatchEvent(balanceUpdatedEvent)
 		})
 
-		$R(event.target).removeAttr('disabled').text(type)
+		reset()
 	}
 
 	render() {
