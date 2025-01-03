@@ -1,0 +1,17 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as m;
+
+.contacts {
+	@include m.dashboard-section('small');
+
+	> div:last-child {
+		button {
+			margin-top: 1rem;
+			width: 100%;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
