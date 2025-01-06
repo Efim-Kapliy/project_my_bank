@@ -1,0 +1,70 @@
+@use 'sass:color';
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as m;
+
+.statistic-item {
+	padding: 1rem;
+	border-radius: $radius;
+	margin-bottom: 1rem;
+	position: relative;
+
+	&::after,
+	&::before {
+		@include m.transition;
+		content: '';
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		border-radius: $radius;
+	}
+
+	&::after {
+		bottom: 0;
+		right: 0;
+		z-index: 1;
+	}
+
+	&::before {
+		bottom: -3px;
+		right: -3px;
+		z-index: 1;
+	}
+
+	&.green {
+		&::before {
+			background-color: color.scale($secondary, $lightness: -40%);
+		}
+
+		&::after {
+			background-color: rgba($color: $secondary, $alpha: 95%);
+		}
+	}
+
+	&.purple {
+		&::before {
+			background-color: color.scale($primary, $lightness: -8%);
+		}
+
+		&::after {
+			background-color: rgba($color: $primary, $alpha: 95%);
+		}
+	}
+
+	> span {
+		color: #111;
+		display: inline-block;
+		z-index: 2;
+		position: relative;
+
+		&:first-child {
+			margin-right: 0.6rem;
+			opacity: 0.8;
+			font-weight: 500;
+		}
+
+		&:last-child {
+			font-size: 18px;
+			font-weight: 500;
+		}
+	}
+}
