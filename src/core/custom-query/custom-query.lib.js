@@ -71,7 +71,7 @@ export async function customQuery({
 	} catch (errorData) {
 		const errorMessage = extractErrorMessage(errorData)
 
-		if (errorMessage) {
+		if (onError) {
 			onError(errorMessage)
 		}
 
