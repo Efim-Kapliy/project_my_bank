@@ -106,7 +106,8 @@ export class CardInfo extends ChildComponent {
 	render() {
 		if (this.store.state.user) {
 			$R(this.element).html(new Loader().render().outerHTML)
-			this.fetchData()
+
+			setTimeout(() => this.fetchData(), 0)
 		}
 
 		return this.element
