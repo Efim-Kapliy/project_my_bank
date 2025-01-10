@@ -39,7 +39,6 @@ export class Header extends ChildComponent {
 		if (this.user) {
 			authSideElement.show()
 			this.userItem.update(this.user)
-			this.router.navigate('/')
 		} else {
 			authSideElement.hide()
 		}

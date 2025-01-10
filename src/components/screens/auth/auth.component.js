@@ -3,6 +3,7 @@ import $R from '@/core/rquery/rquery.lib'
 import formService from '@/core/services/form.service'
 import renderService from '@/core/services/render.service'
 import validationService from '@/core/services/validation.service'
+import { Store } from '@/core/store/store'
 
 import { Button } from '@/components/ui/button/button.component'
 import { Field } from '@/components/ui/field/field.component'
@@ -15,8 +16,12 @@ import template from './auth.template.html'
 export class Auth extends BaseScreen {
 	#isTypeLogin = true
 
-	constructor() {
+	constructor({ router }) {
 		super({ title: 'Auth' })
+
+		this.router = router
+		this.store = Store.getInstance()
+		this.store.addObserver(this)
 		this.authService = new AuthService()
 	}
 
@@ -42,6 +47,8 @@ export class Auth extends BaseScreen {
 
 		const type = this.#isTypeLogin ? 'login' : 'register'
 		this.authService.main(type, formValues)
+
+		this.update()
 	}
 
 	#changeFormType = event => {
@@ -54,6 +61,14 @@ export class Auth extends BaseScreen {
 		$R(event.target).text(this.#isTypeLogin ? 'Sign In' : 'Register')
 
 		this.#isTypeLogin = !this.#isTypeLogin
+	}
+
+	update() {
+		this.user = this.store.state.user
+
+		if (this.user) {
+			this.router.navigate('/')
+		}
 	}
 
 	render() {
