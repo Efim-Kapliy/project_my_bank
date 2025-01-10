@@ -17,6 +17,7 @@ export class Header extends ChildComponent {
 		super()
 
 		this.store = Store.getInstance()
+		this.store.removeObserver(this)
 		this.store.addObserver(this)
 
 		this.userItem = new UserItem(

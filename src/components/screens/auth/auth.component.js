@@ -21,6 +21,7 @@ export class Auth extends BaseScreen {
 
 		this.router = router
 		this.store = Store.getInstance()
+		this.store.removeObserver(this)
 		this.store.addObserver(this)
 		this.authService = new AuthService()
 	}

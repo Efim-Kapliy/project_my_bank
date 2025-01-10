@@ -19,6 +19,7 @@ export class Home extends BaseScreen {
 		super({ title: 'Home' })
 
 		this.store = Store.getInstance()
+		this.store.removeObserver(this)
 		this.store.addObserver(this)
 
 		this.components = {
